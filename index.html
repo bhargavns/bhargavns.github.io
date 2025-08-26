@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhargav Shandilya - Computer Science Ph.D. Student</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a5568;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        main {
+            margin-top: 80px;
+        }
+        
+        section {
+            padding: 4rem 0;
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-links a:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #4a5568;
+            text-align: center;
+        }
+        
+        .education-grid, .experience-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .education-item, .experience-item, .research-item {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .education-item:hover, .experience-item:hover, .research-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .degree-title, .job-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .institution, .company {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .date-location {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .gpa {
+            background: #e6fffa;
+            color: #065f46;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-top: 4px solid #667eea;
+        }
+        
+        .skill-category h3 {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .research-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .research-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .conference {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .research-tech {
+            background: #e6fffa;
+            color: #065f46;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Bhargav Shandilya</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Current Projects</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="about">
+            <div class="container">
+                <h1>Bhargav Shandilya</h1>
+                <p>Computer Science Ph.D. student with a strong background in Statistics, Deep Learning, and Natural Language Processing. Specializing in neuro-symbolic and RAG-based approaches for data-scarce languages.</p>
+                <div class="contact-links">
+                    <a href="mailto:nsbhargav7@gmail.com">Email</a>
+                    <a href="https://www.linkedin.com/in/bhargav-shandilya-a2054b147/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/bhargav-ns" target="_blank">GitHub</a>
+                    <a href="https://scholar.google.com/citations?user=kQOAoUQAAAAJ&hl=en&authuser=1" target="_blank">Google Scholar</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="education-grid">
+                    <div class="education-item fade-in">
+                        <div class="degree-title">Ph.D. in Computer Science</div>
+                        <div class="institution">University of Colorado Boulder</div>
+                        <div class="date-location">Aug 2023 – Present • Boulder, CO</div>
+                        <div class="gpa">GPA: 4.00 / 4.00</div>
+                        <p><strong>Core Research:</strong> Neuro-symbolic and RAG-based approaches to solve documentation problems for data-scarce languages</p>
+                    </div>
+                    
+                    <div class="education-item fade-in">
+                        <div class="degree-title">Master of Science in Computational Linguistics</div>
+                        <div class="institution">University of Colorado Boulder</div>
+                        <div class="date-location">Aug 2021 – May 2023 • Boulder, CO</div>
+                        <div class="gpa">GPA: 4.00 / 4.00</div>
+                        <p><strong>Core Courses:</strong> Deep Learning, Algorithms, Morphology and Syntax, Computational Discourse, Natural Language Processing</p>
+                    </div>
+                    
+                    <div class="education-item fade-in">
+                        <div class="degree-title">Master of Science in Analytics</div>
+                        <div class="institution">Georgia Institute of Technology</div>
+                        <div class="date-location">Aug 2020 – Aug 2021 • Atlanta, GA</div>
+                        <div class="gpa">GPA: 3.83 / 4.00</div>
+                        <p><strong>Core Courses:</strong> Bayesian Statistics, Data Visualization, Machine Learning, Fundamentals of Business and Finance, HCI Principles</p>
+                    </div>
+                    
+                    <div class="education-item fade-in">
+                        <div class="degree-title">Bachelor of Technology in Electronics and Communication Engineering</div>
+                        <div class="institution">PES University</div>
+                        <div class="date-location">Aug 2014 – July 2018 • Bengaluru, India</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2>Experience</h2>
+                <div class="experience-grid">
+                    <div class="experience-item fade-in">
+                        <div class="job-title">Research Programmer Analyst</div>
+                        <div class="company">Carnegie Mellon – Language Technologies Institute</div>
+                        <div class="date-location">May 2025 – present • Pittsburgh, PA</div>
+                        <ul>
+                            <li>Improved audio-to-text transcription accuracy for multiple low-resource languages by 15% over existing benchmark by fine-tuning Qwen-2-Audio</li>
+                            <li>Developing novel RAG and Knowledge Graph-based methods to enhance in-context learning and mitigate LLM hallucinations</li>
+                            <li>Building linguistic analysis dashboards for researchers to perform glossing, translation, and transcription from audio</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item fade-in">
+                        <div class="job-title">Ph.D. Researcher and Teaching Faculty</div>
+                        <div class="company">University of Colorado Boulder</div>
+                        <div class="date-location">Aug 2023 – present • Boulder, CO</div>
+                        <ul>
+                            <li>Developed and trained compact transformer models using PyTorch and CUDA, leveraging LLM agents for custom hyperparameter search</li>
+                            <li>Led a team of graduate student researchers in building AI-powered platforms for language documentation tasks</li>
+                            <li>Collaborated with cross-departmental research teams to conduct user studies for AI in low-resource language contexts</li>
+                            <li>Served as departmental Lead TA and taught multiple undergraduate and graduate-level courses including NLP</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item fade-in">
+                        <div class="job-title">Junior Software Developer - ESG</div>
+                        <div class="company">Janus Henderson Investors</div>
+                        <div class="date-location">Sep 2022 – Aug 2023 • Denver, CO</div>
+                        <ul>
+                            <li>Engineered a scalable C# and .NET back-end with GraphQL API to process high-volume ESG data streams</li>
+                            <li>Designed end-to-end pipelines using Snowflake and Databricks, improving overall efficiency by 50%</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item fade-in">
+                        <div class="job-title">Investment & Operations Tech Intern</div>
+                        <div class="company">Janus Henderson Investors</div>
+                        <div class="date-location">Jun 2022 – Aug 2022 • Denver, CO</div>
+                        <ul>
+                            <li>Developed analytics workflows in Python and Spark to extract portfolio performance insights from Sustainalytics</li>
+                            <li>Created an investment dashboard in Angular.js, increasing lookup efficiency by 25%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="research">
+            <div class="container">
+                <h2>Research & Publications</h2>
+                <div class="research-grid">
+                    <div class="research-item fade-in">
+                        <div class="research-title">Retrieval Augmented Generation to Enhance Glossing Performance</div>
+                        <div class="conference">COLING 2025</div>
+                        <div class="date-location">April 2024 – Sep 2024</div>
+                        <div class="research-tech">Natural Language Processing – PyTorch, LangChain, OpenAI, Claude, Llama-8B, Explainable AI</div>
+                        <ul>
+                            <li>Achieved state-of-the-art performance on the IGT glossing task for morphologically segmented low-resource data</li>
+                            <li>Leveraged RAG and formal language grammars to correct and explain RoBERTa model outputs</li>
+                            <li>Conducted extensive error analysis and user studies through a specialized UI for domain experts</li>
+                            <li>Won a departmental publication fellowship for successfully publishing and presenting the paper</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-item fade-in">
+                        <div class="research-title">On the Robustness of Neural Models for Full Sentence Transformation</div>
+                        <div class="conference">AmericasNLP 2024 Shared Task</div>
+                        <div class="date-location">Mar 2024 – Jun 2024</div>
+                        <div class="research-tech">Natural Language Processing – OpenAI API, Fairseq</div>
+                        <ul>
+                            <li>Conducted comparative analysis of LSTM, transformer, and modern in-context learning approaches</li>
+                            <li>Outperformed baseline by 40% using LLMs, demonstrating superiority of in-context learning in limited data scenarios</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-item fade-in">
+                        <div class="research-title">Lightweight Morpheme Labelling in Context</div>
+                        <div class="conference">Sigmorphon 2023 Workshop</div>
+                        <div class="date-location">Jan 2022 – Dec 2022</div>
+                        <div class="research-tech">Natural Language Processing – Tensorflow, Keras, Pandas</div>
+                        <ul>
+                            <li>Implemented a unique 2D heatmap-based approach to encode morphemic glosses</li>
+                            <li>Reduced training and inference time by over 90% compared to standard transformer models</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Current Projects</h2>
+                <div class="research-grid">
+                    <div class="research-item fade-in">
+                        <div class="research-title">Knowledge Graph-Based Morphological Analysis for Low-Resource Languages</div>
+                        <div class="conference">Ongoing Research • 2024-2025</div>
+                        <div class="research-tech">Neo4j, PyTorch, LangChain, Levenshtein Distance, Fuzzy String Matching</div>
+                        <ul>
+                            <li>Developing auto-generated knowledge graphs from segmented and glossed linguistic data for Dolgan, Arapaho, and other low-resource languages</li>
+                            <li>Building hierarchical representations of WordForm → Lexeme → Morpheme relationships with COMPOSED_OF and IS_FORM_OF connections</li>
+                            <li>Implementing transcription correction mechanisms using fuzzy string matching to handle ASR errors</li>
+                            <li>Creating verifiable linguistic analysis dashboards supporting segmentation, glossing, and translation operations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-item fade-in">
+                        <div class="research-title">Agentic LLM Networks for Linguistic Documentation</div>
+                        <div class="conference">Carnegie Mellon LTI • 2025</div>
+                        <div class="research-tech">Qwen-2-Audio, LLM Agents, Multi-Agent Systems, Audio Processing</div>
+                        <ul>
+                            <li>Deploying specialized agent networks (Analyst, Theorist, Critic, Scribe) for automated knowledge base construction</li>
+                            <li>Improving audio-to-text transcription accuracy by 15% for multiple low-resource languages through fine-tuning approaches</li>
+                            <li>Integrating audio embeddings and phonetic features into knowledge graph nodes for direct audio-to-gloss processing</li>
+                            <li>Developing hypothesis-based segmentation and gloss generation methodologies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-item fade-in">
+                        <div class="research-title">Cascaded Models for Morphological Processing</div>
+                        <div class="conference">Comparative Analysis • 2024</div>
+                        <div class="research-tech">T5, Fairseq, Token Classification, Transformer Models</div>
+                        <ul>
+                            <li>Benchmarking ByT5, Flan-T5, and mT5 models on transcription → surface form → gloss pipeline</li>
+                            <li>Demonstrating superior performance of cascaded approaches over end-to-end models for Dolgan and Arapaho</li>
+                            <li>Comparing statistical models against modern LLM approaches (Llama-4-maverick) with RAG integration</li>
+                            <li>Achieving significant improvements in word accuracy and character error rates through segmentation-first approaches</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-item fade-in">
+                        <div class="research-title">Consciousness and AI: A Symbolic Processing Framework</div>
+                        <div class="conference">Philosophical Research • 2024</div>
+                        <div class="research-tech">Category Theory, Cognitive Science, Philosophy of Mind</div>
+                        <ul>
+                            <li>Developing a five-pronged theoretical approach to consciousness through metaphors, category theory, and distributed cognition</li>
+                            <li>Investigating consciousness as emergent from recursive symbolic abstractions rather than fundamental properties</li>
+                            <li>Analyzing AI systems' simulation of cognitive centers and implications for artificial consciousness development</li>
+                            <li>Bridging computational linguistics research with broader questions about awareness and symbolic processing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>Skills & Certifications</h2>
+                <div class="skills-grid">
+                    <div class="skill-category fade-in">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Shell Scripting</span>
+                            <span class="skill-tag">CUDA</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">.NET</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">Node.js</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category fade-in">
+                        <h3>Python Libraries</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Tensorflow</span>
+                            <span class="skill-tag">Transformers</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">NLTK</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Scikit-Learn</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">LangChain</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category fade-in">
+                        <h3>Tools & Platforms</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Databricks</span>
+                            <span class="skill-tag">Snowflake</span>
+                            <span class="skill-tag">Jupyter</span>
+                            <span class="skill-tag">HuggingFace</span>
+                            <span class="skill-tag">SageMaker</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Azure Suite</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">LangGraph</span>
+                            <span class="skill-tag">Neo4j</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
